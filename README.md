@@ -18,6 +18,7 @@
 ### 기술 스택
 - **Backend**: Java 21, Spring Boot 3.2, Spring Security
 - **Database**: MySQL 8.0, Redis 7
+- **ORM**: Spring Data JPA, Hibernate
 - **Build**: Gradle Multi-Module
 - **API**: RESTful API, Swagger/OpenAPI 3.0
 - **Infrastructure**: Docker, Docker Compose
