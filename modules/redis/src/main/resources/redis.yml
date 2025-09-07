@@ -1,0 +1,29 @@
+spring:
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+datasource:
+  redis:
+    database: 0
+    password: ${REDIS_PASSWORD:password123}
+    master:
+      host: ${REDIS_MASTER_HOST}
+      port: ${REDIS_MASTER_PORT}
+    replicas:
+      - host: ${REDIS_REPLICA_1_HOST}
+        port: ${REDIS_REPLICA_1_PORT}
+
+---
+spring.config.activate.on-profile: local, test
+
+datasource:
+  redis:
+    password: password123
+    master:
+      host: localhost
+      port: 6381
+    replicas:
+      - host: localhost
+        port: 6381
