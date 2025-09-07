@@ -29,12 +29,12 @@
 
 ```
 modules/
-├── auth/     ← JWT 토큰 관련 핵심 로직
+├── auth/     ← JWT 토큰 관련 설정
 ├── jpa/      ← 데이터 접근 계층 설정
 └── redis/    ← 캐싱 계층 설정
 
 supports/
-├── error/    ← 통합 예외 처리
+├── jackson/    ← jackson 설정
 └── logging/  ← 로깅 전략
 ```
 
