@@ -23,7 +23,7 @@
 - **Infrastructure**: Docker, Docker Compose
 - **Security**: JWT, BCrypt, AOP Rate Limiting
 
-###  [설계 의도 및 기술 선택 이유 상세 문서](../DESIGN_DECISIONS.md)
+###  [설계 의도 및 기술 선택 이유 상세 문서](docs/DESIGN_DECISIONS.md)
 
 
 ## 실행 방법
@@ -69,7 +69,7 @@ Swagger UI: `http://localhost:8080/swagger-ui/index.html`
 <details>
 <summary> 전체 API</summary>
 
-![API](img.png)
+![API](docs/images/img.png)
 
 </details>
 
@@ -77,54 +77,54 @@ Swagger UI: `http://localhost:8080/swagger-ui/index.html`
 <details>
 <summary> 회원 가입 API</summary>
 
-![회원가입](register.png)
+![회원가입](docs/images/register.png)
 
 </details>
 
 <details>
 <summary> 로그인 API</summary>
 
-![로그인](login.png)
+![로그인](docs/images/login.png)
 
 </details>
 
 <details>
 <summary>로그인 성공 시 토큰 발급 </summary>
 
-![로그인 성공](loginSuccess.png)
+![로그인 성공](docs/images/loginSuccess.png)
 
 </details>
 
 <details>
 <summary> 회원 정보 조회 (토큰 필요) </summary>
 
-![정보조회](myinfo.png)
+![정보조회](docs/images/myinfo.png)
 
 </details>
 
 <details>
 <summary> 토큰 재발급 API </summary>
 
-![토큰 재발급](refresh.png)
+![토큰 재발급](docs/images/refresh.png)
 </details>
 
 <details>
 <summary> 토큰 재발급 성공 시 </summary>
 
-![재발급 성공](refreshSuccess.png)
+![재발급 성공](docs/images/refreshSuccess.png)
 </details>
 
 
 <details>
 <summary> 로그아웃 API </summary>
 
-![로그아웃](logout.png)
+![로그아웃](docs/images/logout.png)
 </details>
 
 <details>
 <summary> 로그아웃 성공 시 </summary>
 
-![로그아웃 성공](logoutSuccess.png)
+![로그아웃 성공](docs/images/logoutSuccess.png)
 </details>
 
 
@@ -141,6 +141,6 @@ Swagger UI: `http://localhost:8080/swagger-ui/index.html`
 
 
 ## ERD
-### [>> ERD 설계 파일 바로가기](../erd.md)
+### [>> ERD 설계 파일 바로가기](docs/erd.md)
 
 
