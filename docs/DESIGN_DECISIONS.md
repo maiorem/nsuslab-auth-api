@@ -177,9 +177,7 @@ management:
       show-details: when-authorized
 ```
 
-## 5. 코드 품질 및 유지보수성
-
-### 5.1 예외 처리 표준화
+### 5.3 예외 처리 표준화
 
 ```java
 public enum ErrorType {
@@ -192,7 +190,7 @@ public enum ErrorType {
 - 클라이언트가 파싱하기 쉬운 구조적 에러 응답
 - HTTP 상태 코드와 비즈니스 에러 코드 매핑
 
-### 5.2 테스트 전략
+### 5.4 테스트 전략
 
 ```java
 @ExtendWith(MockitoExtension.class)
