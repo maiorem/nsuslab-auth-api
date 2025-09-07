@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: nsuslab-api-test
+  
+  # Bean 중복 정의 허용
+  main:
+    allow-bean-definition-overriding: true
+
+  # JPA 설정 (테스트용)
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: create-drop  # 테스트 시 테이블 생성/삭제
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+
+# JWT 설정 (테스트용)
+jwt:
+  secret: test-jwt-secret-key-for-testing
+  access-token-expiration-ms: 60000   # 1분 (테스트용 짧은 시간)
+  refresh-token-expiration-ms: 300000 # 5분 (테스트용 짧은 시간)
+
+# Logging (테스트용)
+logging:
+  level:
+    com.nsuslab: DEBUG
+    org.springframework.security: DEBUG
+    org.testcontainers: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE
+
+# Management (Actuator) - 테스트용
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always

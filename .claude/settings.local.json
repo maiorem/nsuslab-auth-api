@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(dir /s)",
+      "Bash(mkdir:*)",
+      "Bash(./gradlew:*)",
+      "Bash(cat:*)",
+      "Bash(docker compose:*)",
+      "Bash(docker stop:*)",
+      "Bash(docker rm:*)",
+      "Bash(docker exec:*)",
+      "Bash(redis-cli:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
