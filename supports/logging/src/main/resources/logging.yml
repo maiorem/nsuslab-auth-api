@@ -1,0 +1,64 @@
+logging:
+  config: classpath:logback/logback.xml
+  level:
+    com.nsuslab: INFO
+    org.springframework.security: INFO
+    org.springframework.web: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local, test
+
+logging:
+  level:
+    com.nsuslab: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+logging:
+  level:
+    com.nsuslab: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE
+
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+
+logging:
+  level:
+    com.nsuslab: INFO
+    org.springframework.security: WARN
+    org.springframework.web: WARN
+    org.hibernate.SQL: WARN
+    org.hibernate.type: WARN
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prd
+
+logging:
+  level:
+    com.nsuslab: WARN
+    org.springframework.security: ERROR
+    org.springframework.web: ERROR
+    org.hibernate.SQL: ERROR
+    org.hibernate.type: ERROR
