@@ -142,13 +142,8 @@ refreshTokenCache.saveToken(refreshToken, user.getId(), expiration);
 
 - **Connection Pool**: HikariCP로 커넥션 최적화
 - **N+1 문제 방지**: Batch Fetch Size 설정
-- **인덱싱**: 이메일, 리프레시 토큰에 대한 적절한 인덱스 설정
+- **인덱싱**: 이메일, 리프레시 토큰에 대한 인덱스 설정
 
-### 4.3 무상태 설계
-
-모든 요청이 독립적으로 처리되어 **수평적 확장**에 유리:
-- Load Balancer 뒤의 여러 인스턴스 배치 가능
-- Auto Scaling 시 인스턴스 추가/제거가 사용자에게 영향 없음
 
 ## 5. 운영 관점의 고려사항
 
@@ -169,7 +164,7 @@ public class TokenService {
 - 성능 메트릭 수집을 위한 실행 시간 로깅
 - 보안 이벤트 로깅 (로그인 실패, 의심스러운 접근 등)
 
-### 5.2 Health Check 및 Circuit Breaker
+### 5.2 Health Check 
 
 ```yaml
 management:
@@ -182,30 +177,9 @@ management:
       show-details: when-authorized
 ```
 
-**운영 안정성:**
-- Redis, MySQL 연결 상태 모니터링
-- 메모리, CPU 사용률 추적
-- 장애 시 자동 복구 메커니즘
+## 5. 코드 품질 및 유지보수성
 
-### 5.3 Docker 기반 배포
-
-```dockerfile
-# Multi-stage build로 이미지 크기 최적화
-FROM openjdk:21-jdk-slim as builder
-# ... 빌드 스테이지
-
-FROM openjdk:21-jdk-slim
-# ... 런타임 스테이지
-```
-
-**컨테이너 전략:**
-- **일관성**: 개발/스테이징/프로덕션 환경 일치
-- **확장성**: Kubernetes/Docker Swarm 배포 준비
-- **보안**: Non-root 사용자로 실행, 최소한의 베이스 이미지 사용
-
-## 6. 코드 품질 및 유지보수성
-
-### 6.1 예외 처리 표준화
+### 5.1 예외 처리 표준화
 
 ```java
 public enum ErrorType {
@@ -216,10 +190,9 @@ public enum ErrorType {
 
 **일관된 에러 처리:**
 - 클라이언트가 파싱하기 쉬운 구조적 에러 응답
-- HTTP 상태 코드와 비즈니스 에러 코드의 명확한 매핑
-- 다국어 지원을 위한 에러 코드 체계
+- HTTP 상태 코드와 비즈니스 에러 코드 매핑
 
-### 6.2 테스트 전략
+### 5.2 테스트 전략
 
 ```java
 @ExtendWith(MockitoExtension.class)
@@ -227,30 +200,5 @@ class UserServiceTest {
     // 도메인 로직의 독립적 테스트
 }
 ```
-
 - **Unit Test**: 각 계층별 독립적 테스트
-- **Integration Test**: 실제 Redis, DB와의 연동 테스트
-- **API Test**: 전체 플로우의 End-to-End 테스트
-
-## 7. 향후 개선 방향
-
-### 7.1 단기 개선사항
-- **OAuth 2.0 지원**: 소셜 로그인 기능 추가
-- **MFA (Multi-Factor Authentication)**: TOTP 기반 2차 인증
-- **API Rate Limiting 고도화**: Sliding Window, Token Bucket 알고리즘 적용
-
-### 7.2 장기 개선사항
-- **Microservices 분리**: 인증 서비스의 독립적 배포
-- **Event Sourcing**: 사용자 행동 로그의 이벤트 기반 저장
-- **GDPR 대응**: 개인정보 처리 동의 및 삭제 기능
-
-## 결론
-
-본 프로젝트는 **단순한 기능 구현을 넘어서 실제 운영 환경에서의 요구사항**을 고려하여 설계했습니다:
-
-1. **확장성**: 사용자 증가에 따른 수평적 확장 가능
-2. **보안성**: 다층 보안 전략으로 다양한 공격 벡터 대응
-3. **유지보수성**: 명확한 책임 분리와 모듈화로 변경에 강건한 구조
-4. **운영성**: 모니터링, 로깅, 배포 자동화를 통한 안정적 서비스 운영
-
-이러한 설계 원칙들이 **비즈니스 요구사항 변화에 빠르게 대응**하면서도 **시스템의 안정성을 보장**할 수 있는 기반이 됩니다.
+- **Integration Test**: 테스트 컨테이너 기반 격리된 통합 테스트 환경 제공
