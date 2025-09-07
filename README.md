@@ -52,14 +52,15 @@ docker-compose -f docker/docker-compose.yml up -d
 ```
 Root
 ├── app ( spring-applications )
-│   └── 📦 api
+│   └── 📦 api # api 서버
 ├── modules ( reusable-configurations )
-│   └── 📦 jpa
-│   └── 📦 redis
-│   └── 📦 jwt
+│   └── 📦 jpa # JPA 설정
+│   └── 📦 redis # Redis 설정
+│   └── 📦 auth # JWT 인증 설정
 └── supports ( add-ons )
-    ├── 📦 jackson
-    └── 📦 logging
+    ├── 📦 jackson # Jackson 설정
+    └── 📦 logging # 로깅 설정
+    └── 📦 monitoring # actuator 설정
 ```
 
 ## API 명세
