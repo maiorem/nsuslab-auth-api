@@ -1,4 +1,4 @@
-# NSUS Lab Authentication System
+# Authentication System
 
 **확장 가능하고 보안성이 강화된 JWT 기반 인증 시스템**
 
